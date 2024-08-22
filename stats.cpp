@@ -14,8 +14,8 @@ Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& input)
     }
     else{
         float sum = 0.0f;
-        float max = input[0];
-        float min = input[0];
+        float max = std::numeric_limits<float>::lowest();
+        float min = std::numeric_limits<float>::max();
 
         for (const float& num : input) {
             sum += num;
