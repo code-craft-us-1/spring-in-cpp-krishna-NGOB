@@ -6,16 +6,18 @@
 Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& input) {
     //Implement statistics here
     Stats stats;
-    if (input.size()==0)
+    auto inputSize = input.size();
+    if (inputSize==0)
     {
         stats.average = NAN;
         stats.max = NAN;
         stats.min = NAN;
     }
-    else{
+    else
+    {
         float sum = 0.0f;
-        float max = std::numeric_limits<float>::lowest();
-        float min = std::numeric_limits<float>::max();
+        float max = input[0];
+        float min = input[0];
 
         for (const float& num : input) {
             sum += num;
@@ -23,7 +25,7 @@ Statistics::Stats Statistics::ComputeStatistics(const std::vector<float>& input)
             if (num < min) min = num;
         }
 
-        stats.average = sum / input.size();
+        stats.average = sum / inputSize;
         stats.max = max;
         stats.min = min;
     }
